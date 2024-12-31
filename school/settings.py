@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-gs@6%!(at0d$a*&^_%2dvu4=#9d3o2gk*$d-hjpr*3=#0%8d@i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['school-htaf.onrender.com', 'localhost', '127.0.0.1']
-
+#ALLOWED_HOSTS = ['school-htaf.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 
 # Application definition
 INSTALLED_APPS = [
