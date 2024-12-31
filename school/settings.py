@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gs@6%!(at0d$a*&^_%2dvu4=#9d3o2gk*$d-hjpr*3=#0%8d@i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['school-htaf.onrender.com', 'localhost', '127.0.0.1']
+
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware', 
+    'django.middleware.common.XForwardedHostMiddleware',  # Ajout de ce middleware
 ]
 
 ROOT_URLCONF = 'school.urls'
