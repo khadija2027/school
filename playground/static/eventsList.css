@@ -1,0 +1,1101 @@
+/* eventsList.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1.event-header {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2rem;
+    color: #0056b3;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+form label {
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+form select {
+    padding: 5px 10px;
+    font-size: 1rem;
+}
+
+.event-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.event-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px  rgba(162, 5, 5, 0.741);
+    overflow: hidden;
+    max-width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px  rgba(162, 5, 5, 0.741);
+}
+
+.event-image {
+    position: relative;
+}
+
+.event-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.event-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background:  rgba(162, 5, 5, 0.741);
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+}
+
+.event-content {
+    padding: 15px;
+}
+
+.event-title {
+    font-size: 1.25rem;
+    margin: 10px 0;
+    color:  rgba(162, 5, 5, 0.741);
+}
+
+.event-start-date,
+.event-finish-date {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    color: #666;
+}
+
+.no-events {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 1.25rem;
+    color: #666;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1rem;
+    color:  rgba(162, 5, 5, 0.741);
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.nav-item a{
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+.sec-padding{
+    padding-bottom: 80px;
+}
+.fixed-top{
+    background: #ebdbdb;
+}
+.nav-item{
+    padding: 0px 5px;
+}
+.nav-btn{
+    padding: 10px 28px !important;
+    background-color: #ebdbdb;
+    color: #ffffff !important;
+    border: none;
+    
+}
+
+/* début menu */
+/* Barre supérieure */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Icône de menu */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 10px; /* Ajuster pour aligner avec le logo */
+    color: rgba(162, 5, 5, 0.741); 
+}
+
+/* Logo */
+.logo img{
+    width:100px ;
+}
+
+.hidden {           /* POUR masquer la barre supérieure lors de l'affichage du menu */
+    display: none;
+}
+
+/* Menu latéral */
+.menu-container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    z-index: 999;
+}
+.menu-container.active {
+    transform: translateX(0);
+}
+/* Style pour les éléments de menu */
+.menu-item {
+    border-bottom: 2px solid transparent; /* Bordure invisible par défaut */
+    display: inline-block; /* Aligne les éléments horizontalement */
+    margin-right: 20px; /* Espace entre les éléments */
+    color: #fff; /* Couleur du texte */
+    font-size: 16px; /* Taille du texte */
+    cursor: pointer; /* Curseur en forme de main */
+    position: relative; /* Nécessaire pour le pseudo-élément ::after */
+}
+.menu-item::after {
+    content: ""; /* Crée une ligne indépendante */
+    position: absolute;
+    left: 0;
+    right: 0; /* Étend la ligne sous le texte */
+    bottom: 0;
+    height: 3px; /* Épaisseur de la ligne */
+    background-color: transparent; /* Invisible par défaut */
+    transition: background-color 0.4s ease, width 0.4s ease; /* Animation fluide */
+}
+.menu-item:hover::after {
+    background-color: #fff; /* Couleur du soulignement au survol */
+    width: 100%; /* Étend la ligne sous tout le texte */
+    display: inline-block;
+}
+
+/* Style des sous-menu */
+.submenu a {
+    text-decoration: none; /* Supprime les soulignements par défaut */
+    color: #333; /* Couleur des liens */
+    cursor: pointer; /* Curseur pointeur au survol */
+    position: relative; /* Nécessaire pour le pseudo-élément ::after */
+}
+
+.submenu a::after {
+    content: ""; /* Crée une ligne indépendante */
+    position: absolute;
+    left: 0;
+    right: 0; /* S'assure que la ligne suit la largeur du texte */
+    bottom: -1px; /* Positionne la ligne juste sous le texte */
+    height: 2px; /* Épaisseur de la ligne */
+    background-color: transparent; /* Invisible par défaut */
+}
+
+.submenu a:hover::after {
+    background-color: #333; /* Couleur de la ligne au survol */
+    width: 100%;
+}
+
+/* Supprimer les puces des listes */
+.submenu ul {
+    list-style-type: none; /* Supprime les points */
+    padding-left: 0; /* Supprime l'espace de gauche */
+}
+
+/* Espace entre les éléments du menu */
+.menu-item, .submenu-item {
+    display: block; /* Assure que les éléments sont des blocs */
+    margin-bottom: 10px; /* Ajoute un espacement vertical */
+    padding: 5px 0; /* Optionnel : Ajoute un espacement intérieur */
+    margin-top:25px;
+}
+
+/* Optionnel : Espace entre les sous-menus */
+.submenu-item {
+    margin-left: 70px; /* Décale les sous-menus */
+    width: 100%;
+}
+
+ul {
+    list-style-type: none; /* Enlève les points */
+    padding: 0; /* Enlève les marges intérieures */
+    margin: 0; /* Enlève les marges extérieures */
+}
+/* Style les colones de formations */
+/* Style pour le conteneur général */
+.submenu-container {
+    display: flex; /* Dispose les colonnes côte à côte */
+    justify-content: space-between; /* Ajoute de l'espace entre les colonnes */
+    padding: 10px;
+    background-color: #fff; /* Fond blanc */
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    gap: 20px; /* Espacement entre les colonnes */
+    padding: 20px;
+}
+
+/* Style pour les colonnes */
+.submenu-column {
+    width: 80%; /* Chaque colonne prend environ la moitié de la largeur */
+    padding: 0 10px; /* Espacement interne */
+}
+
+/* Ligne verticale entre les colonnes */
+.submenu-column:not(:last-child) {
+    border-right: 1px solid #ddd; /* Ajoute une ligne de séparation */
+}
+
+/* Style pour les titres de colonnes */
+.submenu-column h3 {
+    color: #333; /* Couleur du texte */
+    margin-bottom: 10px;
+}
+
+/* Style pour les liens */
+.submenu-item {
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    color: #333; /* Couleur du texte */
+    display: block; /* Le lien occupe toute la largeur */
+    margin-bottom: 5px; /* Espacement entre les éléments */
+    margin-left: 2%;
+}
+/* Fin Style les colones de formations */
+
+.menu-sidebar {   /*LA BARRE ROUGE */
+    width: 360px;    /* LARGEUR DE LA BARRE ROUGE */
+    background-color: #760303;
+    color: white;
+    padding: 50px;
+    height: 100vh;  /* AVANT 100 POUR REMPLIR TOUTE LA LONGUEUR */
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 25px;
+    left: 30px;
+}
+
+/* Sous-menu */
+.submenu-container {
+    flex-grow: 1;
+    background-color: #fff;   /* le fond blanc du menu */
+    padding: 50px;  /* AVANT il y'avait 20 */
+    overflow-y: auto;
+}
+
+.submenu {
+    display: none;
+}
+
+.submenu.active {
+    display: block;
+}
+
+/* Contenu principal */
+main {
+    margin-top: 60px; /* Pour éviter le chevauchement avec la barre */
+    padding: 20px;
+}
+/* pour que le texte et l'image du haut soit un peu plus bas */
+.header-section .container{
+    height:75%;
+    margin-top:30px;
+}
+
+/* Responsive - Ajuste la largeur du menu latéral sur les petits écrans */
+@media (max-width: 600px) {
+    .menu-sidebar {
+        width: 200px; /* Suppression des caractères invisibles */
+    }
+}
+
+/* Liens du menu */
+.sidebar-nav a {
+    text-decoration: none; /* Suppression du soulignement */
+    color: #d16868; /* Couleur blanche pour le texte */
+    font-size: 16px; /* Taille de la police */
+    padding: 10px; /* Espacement intérieur */
+    display: block; /* Affiche chaque lien comme un bloc */
+}
+/* Fin menu */
+
+/* DEBUT partie VALUES */
+.values-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.section-intro {
+    font-size: 1.3rem;
+    color: #444;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-weight: 500;
+}
+
+/* Alignement en ligne */
+.values-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Chaque élément */
+.value-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.value-item i {
+    font-size: 50px;
+    color: #760303;
+    margin-bottom: 10px;
+}
+
+.value-item h3 {
+    font-size: 1.2rem;
+    color: #760303;
+    margin-bottom: 5px;
+}
+
+.value-item p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.4;
+    text-align: center;
+}
+/* FIN partie VALUES */
+
+/* début partie sup titre et photo */
+.header-section {
+    background-image: url('../images/blocb.jpg'); /* Remplacez par le chemin de votre image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px; /* Ajustez selon vos besoins */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white; /* Couleur du texte */
+    text-align: center;
+}
+
+.header-title {
+    font-size: 5.5rem; /* Taille du titre */
+    font-weight: bold;
+    margin-top: 5%;
+
+    text-shadow: 0.5px 0.5px 0.5px black, /* Ombre fine */
+                 -0.5px -0.5px 0.5px black; /* Ombre opposée pour créer un contour net */
+}
+
+.header-subtitle {
+    font-size: 2.5rem;
+    margin: 10px 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px black, /* Ombre fine */
+                 -1px -1px 2px black; /* Ombre opposée pour créer un contour net */
+}
+.get-btn{
+    padding: 10px 35px;
+    background-color: #760303;
+    font-weight: bold;
+    color: #eae6e6;
+    border: none;
+    
+    transition: all .3s;
+}
+
+.get-btn:hover {
+    background-color: #d62828;
+}
+/* fin partie sup titre et photo */
+
+.sidebar-nav a:hover {
+    background-color: #555;
+   
+}
+
+.navbar-toggler-icon {
+    font-size: 24px;
+    font-weight: bold;
+    color: #D32F2F;
+}
+
+
+/* Sidebar links */
+.sidebar .nav-link {
+    color: #fff;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #760303;
+}
+
+
+.sidebar-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Start hidden off-screen */
+    width: 250px;
+    height: 100%;
+    background-color: #eae6e6;
+    border-right: 2px solid #ffffff;
+    padding: 20px;
+    transition: 0.5s; /* Smooth transition */
+    z-index: 1000;
+}
+
+.sidebar-menu.show {
+    left: 0; /* Slide sidebar in */
+}
+
+.sidebar-nav li {
+    list-style: none;
+    margin: 15px 0;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #D32F2F;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    font-size: 24px;
+    color: #D32F2F;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+}
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar .navbar-nav {
+    padding-top: 60px;
+}
+
+.sidebar .nav-item a {
+    font-size: 18px;
+    padding: 15px 20px;
+    display: block;
+    color: #000;
+}
+
+.sidebar .nav-item a:hover {
+    background-color: #e9ecef;
+}
+
+/* CENTRER LES CARTES DE FORMATIONS*/
+.cards-section .container {
+    display: flex;
+    justify-content:center;
+}
+
+
+/* Main Content Area */
+.content {
+    margin-left: 250px; /* Offset for sidebar */
+    transition: margin-left 0.3s;
+}
+
+/* Footer Section */
+.footer-section {
+    padding: 40px 0;
+    background-color: #282531;
+    color: #eae6e6;
+    text-align: center;
+}
+
+.footer-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.footer-section form {
+    margin-bottom: 20px;
+}
+
+.footer-section textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-section button {
+    padding: 10px 20px;
+    background-color: #b22222; /* Red color for submit button */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+.footer-section button:hover {
+    background-color: #a11d1d;
+}
+
+/* Header section */
+.header-section{
+    height: 95vh;    /* LONGUEUR PHOTO DU HAUT */
+    background-color: #eae6e6;
+}
+.header-details h6{
+    color: #FD511A;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+.header-details h1{
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 70px;
+    color: #000000;
+    margin-bottom: 19px;
+}
+.header-details h1 span{
+    color: #760303;
+}
+.header-details p{
+    font-size: 16px;
+    line-height: 36px;
+    color: #6C6B6B;
+    margin-bottom: 15px;
+}
+
+.get-btn:hover{
+    background-color: #760303;
+}
+
+/* Cards section */
+.cards-section{
+    margin-top: 40px;
+}
+.cards-inner{
+    padding: 50px 0px;
+    text-align: center;
+    background: #eae6e6;
+    transition: all .4s;
+    height:350px;
+}
+.cards-inner:hover{
+    background: #FFFFFF;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
+}
+.cards-inner img{
+    width: 65px;
+    height: 83px;
+}
+.cards-inner h5{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    color: #413960;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+.cards-inner p{
+    font-size: 16px;
+    line-height: 24px;
+    color: #585859;
+    margin-bottom: 0;
+}
+
+/* course-section */
+.title-text{
+    font-size: 36px;
+    line-height: 54px;
+    color: #413960;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+.card{
+    border: none;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+    
+}
+.card-img-top{
+    padding: 20px;
+    padding-bottom: 0;
+}
+.card-body h5{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    color: #413960;
+    margin-bottom: 3px;
+}
+.card-body p{
+    font-size: 16px;
+    line-height: 24px;
+    color: #585859;
+    margin-bottom: 19px;
+}
+.buy-btn{
+    padding: 8px 27px;
+    background-color: #760303;
+    color: #ffffff;
+    border: none;
+    
+    transition: all .3s;
+}
+.buy-btn:hover{
+    background-color: #760303;
+}
+.card-footer{
+    background: #ffffff;
+    border-top: 0px;
+    
+}
+.date img{
+    width: 24px;
+    height: 24px;
+}
+.date h6{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #585859;
+    margin-left: 3px;
+}
+/* video area */
+.video-section{
+    background-color: #eae6e6;
+    padding: 80px 0px;
+    margin-bottom: 50px;
+}
+.video-details h2{
+    font-size: 36px;
+    line-height: 54px;
+    color: #413960;
+}
+
+.video-image{
+    position: relative;
+}
+/* testimonail section */
+.testimonial-photo {
+    width: 120px; /* Ajustez la taille de l'image */
+    height: 120px; /* La hauteur doit être identique à la largeur */
+    border-radius: 50%; /* Rendre l'image circulaire */
+    object-fit: cover; /* S'assurer que l'image reste bien cadrée */
+    border: 3px solid #ddd; /* Bordure légère (optionnel) */
+    margin-right: 20px; /* Espace entre l'image et le texte */
+}
+.testimonial-inner {
+    display: flex; /* Disposition flexible */
+    gap: 20px; /* Espace entre les éléments */
+}
+p {
+    line-height: 1.6; /* Améliorer la lisibilité */
+    text-align: justify; /* Texte justifié */
+}
+
+
+
+.cards-inner {
+    padding: 20px;
+    background: #f7f7f7;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Répartit l'espace entre les éléments */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 105%;
+}
+
+.cards-inner:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cards-inner img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.cards-inner .btn-primary {
+    margin-top:10%;
+    display: inline-block;
+    padding: 4% 10%;
+    background-color: #6c0c0c;
+    color: white;
+    font-size: 14px;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cards-inner .btn-primary:hover {
+    background-color: #a9a5a56b;
+}
+
+/* Footer Section */
+.logo-container {
+    position: absolute; /* Place le logo par rapport au footer */
+    top: 9%; /* Ajuste la position verticale */
+    left: 40px; /* Ajuste la position horizontale */
+    z-index: 10; /* Assure que le logo est au-dessus du contenu */
+    background-color: #fff; /* Fond blanc du cadre */
+    border-radius: 50%; /* Forme circulaire */
+    width: 70px; /* Largeur du logo */
+    height: 70px; /* Hauteur du logo */
+    display: flex; /* Centre le logo */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1); /* Ajoute une légère ombre */
+}
+
+.footer-logo {
+    width: 190%; /* Ajuste la taille de l'image par rapport au conteneur */
+    height: auto;
+    border-radius: 50%; /* Assure que l'image respecte la forme circulaire */
+}
+
+.footer-section {
+    padding: 40px 0;
+    background-color: #282531;
+    color: #ebdbdb;
+    text-align: center;
+}
+
+.footer-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.footer-section form {
+    margin-bottom: 20px;
+}
+
+.footer-section textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-section button {
+    padding: 10px 20px;
+    background-color: #b22222; /* Red color for submit button */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+.footer-section button:hover {
+    background-color: #a11d1d;
+}
+/* Contact Section start */
+.contact {
+    background: #f4f2ed;
+    padding-top: 30px;
+}
+  
+.container {
+    max-width:1100px;
+}
+  
+.contact-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+  
+.contact-info {
+    width: 80%;
+}
+  
+.contact-info div {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+  
+.contact-info h3 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+  
+.contact-info p {
+    color: #9a9a9a;
+    text-align: left; /* Aligne le texte à gauche */
+
+}
+  
+.contact-info p i {
+    color: #fff;
+    margin-right: 5px;
+    margin-left: 80px;
+}
+  
+.contact-info a i {
+    color: #fff;
+    background: #383848;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50%;
+}
+  
+.contact-info a i:hover {
+    background-color: #fff;
+    color: #383848;
+}  
+.footer-section{
+    padding-top: 50px;
+    background: #6c0c0c;
+    color: #FFFFFF;
+}
+.footer-p p{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 30px;
+}
+.footer-inner{
+    padding-bottom: 10px;
+}
+.footer-list-item ul li{
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 5px;
+}
+
+.footer-list-item a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+small{
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    color: #CDCDCD;
+    position: absolute; /* Rend l'élément positionnable */
+    bottom: 0;          /* Place-le au bas du footer */
+    left: 50%;          /* Aligne horizontalement au centre */
+    transform: translateX(-50%); /* Centre le texte exactement au milieu */
+    width: 100%; 
+}
+/*FIN Footer Section */
+
+/* Section Contactez-nous */
+.contact-form {
+    background-color: #f7f7f7;
+    padding: 50px 20px;
+    margin-top: 50px;
+   
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre de la section */
+.section-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #413960;
+}
+
+/* Conteneur pour le formulaire et la carte */
+.contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Conteneur du formulaire */
+.form-container {
+    background-color: white;
+    flex: 1 1 45%; /* S'adapte sur les petits écrans */
+    padding: 20px;
+    border: 1px solid #ddd;
+    
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Champs du formulaire */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #D32F2F;
+    box-shadow: 0px 0px 4px rgba(211, 47, 47, 0.5);
+}
+
+/* Bouton de soumission */
+.submit-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #760303;
+    color: white;
+    border: none;
+    
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #b71c1c;
+}
+
+/* Conteneur de la carte */
+.map-container {
+    flex: 1 1 45%; /* S'adapte sur les petits écrans */
+    height: 350px;
+    border: 1px solid #ddd;
+    
+    overflow: hidden;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .contact-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-container, .map-container {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Responsive Css */
+@media only screen and (max-width: 1024px) {
+    .header-section{
+        padding-top: 80px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .header-section {
+        height: 100%;
+        padding-bottom: 50px;
+        padding-top: 0;
+    }
+    .header-details {
+        padding-top: 120px;
+    }
+    .cards-inner{
+        margin-bottom: 20px;
+    }
+    .video-details {
+        margin-bottom: 50px;
+    }
+    .testimonial-inner{
+        text-align: center;
+    }
+    .testimonial-inner p{
+        margin-left: 0;
+    }
+    .nav-btn{
+        max-width: 20%;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .card-deck{
+        display: block !important;
+    }
+    .card{
+        margin-bottom: 30px !important;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .header-details h1 {
+        font-size: 44px;
+        line-height: 65px;
+        margin-bottom: 15px;
+    }
+    .footer-list-item ul li {
+        font-size: 14px;
+        line-height: 26px;
+    }
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #7a280f, #94210d);
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        /* Container Styling */
+        .register-container {
+            width: 400px;
+            padding: 40px 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Header Styling */
+        .register-container h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styling */
+        form {
+            width: 100%;
+            text-align: left;
+        }
+
+        form .form-group {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        form input:focus {
+            border-color: #94210d;
+            box-shadow: 0 0 6px rgba(78, 84, 200, 0.3);
+        }
+
+        form input[type="submit"] {
+            background: #7a280f;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+
+        form input[type="submit"]:hover {
+            background: #ffffff;
+        }
+
+        /* Error Messages */
+        .error-message {
+            color: #d9534f;
+            font-size: 13px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        /* Password Rules */
+        .password-rules {
+            font-size: 13px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .password-rules ul {
+            margin-top: 5px;
+            margin-left: 15px;
+            list-style: disc;
+        }
+
+        .password-rules ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Sign-in Link */
+        .login-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .login-link a {
+            color: #7a280f;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .login-link a:hover {
+            color: #7a280f;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const passwordInput = document.querySelector('input[name="password1"]');
+            const rules = document.querySelectorAll('.password-rules ul li');
+
+            passwordInput.addEventListener('input', () => {
+                const value = passwordInput.value;
+
+                // Vérifications interactives
+                rules[0].style.color = value.length >= 8 ? 'green' : 'red'; // Au moins 8 caractères
+                rules[1].style.color = !value.match(/^[A-Za-z]*$/) ? 'green' : 'red'; // Ne pas être trop simple
+                rules[2].style.color = !value.match(/^\d*$/) ? 'green' : 'red'; // Ne pas être numérique
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Créer un compte</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Username Field -->
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <p class="error-message">{{ form.username.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                <p class="password-rules">
+                    Le mot de passe doit respecter les règles suivantes :
+                    <ul>
+                        <li>Contenir au moins 8 caractères.</li>
+                        <li>Ne pas être trop simple.</li>
+                        <li>Ne pas être entièrement numérique.</li>
+                    </ul>
+                </p>
+                {% if form.password1.errors %}
+                    <p class="error-message">{{ form.password1.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Password Confirmation Field -->
+            <div class="form-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <p class="error-message">{{ form.password2.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <input type="submit" value="S'inscrire">
+        </form>
+        <div class="login-link">
+            <p>Tu as déjà un compte ? <a href="{% url 'login' %}">Se connecter</a></p>
+        </div>
+    </div>
+    <a href ="{% url 'Acceuil'%}" > Accueil  </a>
+</body>
+</html>

@@ -1,0 +1,318 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Souss Business School - Réglements </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'réglements.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Fontawsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ce que j'ai ajouté -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<script src="{% static 'jst.js' %}"></script>
+  <!--
+    ===================
+        barre sup
+    ===================
+    -->
+
+    <!-- Barre supérieure -->
+    <header class="top-bar">
+        <div class="menu-icon">☰</div>
+        <div class="logo"> 
+            <a href="">
+                <img src="../../media/acceuil_image/logoo.png" alt="logo" class="img-fluid">
+            </a>  
+            <a href="{% url 'login' %}">Se connecter</a> 
+        </div>
+    </header>
+
+    <!-- Menu latéral -->
+    <div class="menu-container">
+        <div class="menu-sidebar">
+            <button class="close-btn">×</button>
+            <ul>
+                <li class="menu-item" data-target="À propos">À propos</li>
+                <li class="menu-item" data-target="Formations">Formations</li>
+                <li class="menu-item" data-target="Évènements">Évènements</li>
+                <li class="menu-item" data-target="Partenaires">Partenaires</li>
+                <li class="menu-item" data-target="Recruteurs et organisations">Recruteurs et organisations</li>
+                <li class="menu-item" data-target="Vie dans le campus">Vie dans le campus</li>
+                <li><a href="mailto:fsjes-cuam@uiz.ac.ma" class="menu-item" style="text-decoration: none; color: inherit;">Contactez-nous</a></li>
+            </ul>
+            <div class="contact-info">
+                <div>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/souss-business-school/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>  
+        </div>
+
+        <!-- Sous-menus -->
+        <div class="submenu-container">
+            <!-- Sous-menu de "À propos" -->
+            <div id="À propos" class="submenu">
+                <h3>À propos</h3>
+                <ul>
+                    <li><a href="/ecole" class="submenu-item">> École</a></li>
+                    <li><a href="/faculte" class="submenu-item">> Faculté</a></li>
+                    <li><a href="/mot-president" class="submenu-item">> Mot du président</a></li>
+                    <li><a href="/equipes" class="submenu-item">> Équipe</a></li>
+                    <li><a href="/avis_etudiant" class="submenu-item">> Avis de nos étudiants</a></li>
+                    <li><a href="/alumni" class="submenu-item">> Alumni</a></li>
+                </ul>
+            </div>
+
+            <div id="Formations" class="submenu">
+                <h3>Formations</h3>
+                <div class="submenu-container">
+                    <!-- Section Licence -->
+                    <div class="submenu-column">
+                        <h3>Licence d'excellence</h3>
+                        {% for formati in formatis %}
+                        {% if formati.formation_type == "Licence" %}
+                        <ul>
+                            <li><a href="{% url 'formati' formati.id %}" class="submenu-item">> {{formati.name}}</a>
+                        </ul>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <!-- Section Master -->
+                    <div class="submenu-column">
+                        <h3>Master d'excellence</h3>
+                        <div class="submenu-column">
+                            <h3>Licence d'excellence</h3>
+                            {% for formati in formatis %}
+                            {% if formati.formation_type == "Master" %}
+                            <ul>
+                                <li><a href="{% url 'formati' formati.id %}" class="submenu-item">> {{formati.name}}</a>
+                            </ul>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Évènements" class="submenu">
+                <h3>Évènements</h3>
+                <ul>
+                    <li><a href="/News" class="submenu-item">> Récents</a></li>
+                    <li><a href="/Events" class="submenu-item">> Programmés</a></li>
+                </ul>
+            </div>
+            <div id="Partenaires" class="submenu">
+                <h3>Partenaires</h3>
+                <ul>
+                    <li><a href="/partenaires_locaux" class="submenu-item">> Locaux</a></li>
+                    <li><a href="/partenaires_internationaux" class="submenu-item">> Internationaux</a></li>
+                </ul>
+            </div>
+            <div id="Recruteurs et organisations" class="submenu">
+                <h3>Recruteurs et organisations</h3>
+                <ul>
+                    <li><a href="/stages" class="submenu-item">> Stages</a></li>
+                    <li><a href="/recruteurs" class="submenu-item">> Recrutements</a></li>
+                </ul>
+            </div>
+            <div id="Vie dans le campus" class="submenu">
+                <h3>Vie dans le campus</h3>
+                <ul>
+                    <li><a href="/clubs" class="submenu-item">> Clubs</a></li>
+                    <li><a href="/viesportive" class="submenu-item">> Vie sportive</a></li>
+                    <li><a href="/bde" class="submenu-item">> Bureau des Étudiants (BDE)</a></li>
+                    <li><a href="/bda" class="submenu-item">> Bureau des Arts (BDA)</a></li>
+                    <li><a href="/E_services" class="submenu-item">> E-Service</a></li>
+                    <li><a href="/equipement" class="submenu-item">> Équipement</a></li>
+                    <li><a href="/réglements" class="submenu-item">> Règlement</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--
+    ===================
+       fin barre sup
+    ===================
+    -->
+  
+<div class="page">
+<!-- Section principale -->
+    <section class="intro">
+        <h1><strong>Règlements de Souss Business School</strong></h1>
+        <p>Bienvenue sur la page des règlements. Vous trouverez ci-dessous les documents relatifs à nos règles académiques, comportementales, d'utilisation des équipements, et plus encore. Cliquez sur les liens pour télécharger les PDF correspondants.</p>
+    </section>
+
+    <!-- Section des Règlements Académiques -->
+    <section class="reglement-academique">
+        <h2><strong>Règlement Académique</strong></h2>
+        <p>Consultez notre règlement académique pour comprendre les exigences concernant la fréquentation des cours, les évaluations, et la progression dans vos études.</p>
+        <!-- Lien direct pour télécharger le PDF -->
+        <a href="path/to/your/reglement_academique.pdf" target="_blank" class="download-btn">Télécharger le Règlement Académique</a>
+    </section>
+
+    <!-- Section des Règlements des Équipements -->
+    <section class="reglement-equipements">
+        <h2><strong>Règlement des Équipements</strong></h2>
+        <p>Voici le règlement concernant l'utilisation des salles informatiques, des espaces collaboratifs, et des autres équipements de l'école.</p>
+        <!-- Lien direct pour télécharger le PDF -->
+        <a href="path/to/your/reglement_equipements.pdf" target="_blank" class="download-btn">Télécharger le Règlement des Équipements</a>
+    </section>
+
+    <!-- Section des Règlements Comportementaux -->
+    <section class="reglement-comportement">
+        <h2><strong>Règlement Comportemental</strong></h2>
+        <p>Consultez le règlement comportemental pour connaître les attentes relatives au respect des autres étudiants, du personnel et des règles de l'école.</p>
+        <!-- Lien direct pour télécharger le PDF -->
+        <a href="path/to/your/reglement_comportement.pdf" target="_blank" class="download-btn">Télécharger le Règlement Comportemental</a>
+    </section>
+
+    <!-- Section des Règlements de Sécurité -->
+    <section class="reglement-securite">
+        <h2><strong>Règlement de Sécurité</strong></h2>
+        <p>Le règlement de sécurité vous informe sur les procédures d'urgence et les mesures à suivre en cas de besoin.</p>
+        <!-- Lien direct pour télécharger le PDF -->
+        <a href="path/to/your/reglement_securite.pdf" target="_blank" class="download-btn">Télécharger le Règlement de Sécurité</a>
+    </section>
+
+
+        <!-- Section des Sanctions -->
+        <section class="sanctions">
+            <h2><strong>Sanctions en Cas de Non-Respect des Règlements</strong></h2>
+            <p>Il est essentiel que tous les étudiants respectent les règlements de l'école pour garantir un environnement d'apprentissage harmonieux et respectueux. Les infractions aux règles peuvent entraîner des sanctions qui varient en fonction de la gravité de l'infraction.</p>
+            
+            <div class="sanctions-list">
+                <ul>
+                    <li><strong>Infraction mineure :</strong> Avertissement écrit ou rappel des règles.</li>
+                    <li><strong>Infraction modérée :</strong> Suspension temporaire des services (accès aux équipements, aux salles, etc.).</li>
+                    <li><strong>Infraction grave :</strong> Suspension temporaire de l'accès à l'école, exclusion temporaire des cours.</li>
+                    <li><strong>Infraction très grave :</strong> Expulsion définitive de l'établissement.</li>
+                </ul>
+            </div>
+            
+            <p>Pour plus de détails sur les sanctions et les procédures, veuillez consulter les documents ci-dessous.</p>
+            
+            <!-- Lien pour télécharger le document complet des sanctions -->
+            <a href="path/to/your/sanctions.pdf" target="_blank" class="download-btn">Télécharger le Document des Sanctions</a>
+        </section>
+
+<!-- Section FAQ - Règlements et Sanctions -->
+<section class="faq">
+    <h2><strong>Règlements et Sanctions</strong></h2>
+    <p>Voici les questions fréquemment posées concernant les règlements de l'école et les sanctions en cas de non-respect des règles.</p>
+    
+    <div class="faq-list">
+        <div class="faq-item">
+            <h3>Quelles sont les règles concernant le respect des horaires ?</h3>
+            <p>Les étudiants sont tenus de respecter les horaires d'ouverture des salles et des équipements. Tout retard ou absence non justifiée peut entraîner des sanctions. Il est recommandé de prévenir à l'avance en cas d'impossibilité de respecter les horaires.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Que faire si je ne peux pas assister à un cours ou à une activité prévue ?</h3>
+            <p>Si vous ne pouvez pas assister à un cours ou une activité, veuillez en informer le responsable ou l'administration au plus tôt. Des justificatifs peuvent être demandés pour valider votre absence.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Quels comportements sont interdits à l'école ?</h3>
+            <p>Les comportements violents, le harcèlement, le plagiat, ainsi que l'utilisation inappropriée des équipements sont strictement interdits. Tout manquement à ces règles peut entraîner des sanctions disciplinaires, allant de l'avertissement à l'exclusion temporaire ou permanente.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Quelles sanctions sont prévues en cas de non-respect des règles ?</h3>
+            <p>Les sanctions varient en fonction de la gravité de l'infraction. Elles peuvent inclure des avertissements, des suspensions temporaires d'accès aux équipements ou aux cours, voire une exclusion définitive dans les cas les plus graves.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Puis-je contester une sanction ?</h3>
+            <p>Oui, il est possible de contester une sanction. Si vous estimez que la sanction est injustifiée, vous pouvez soumettre une demande de révision auprès de l'administration, accompagnée de tous les éléments de preuve nécessaires.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Les sanctions peuvent-elles être réévaluées ?</h3>
+            <p>Oui, dans certains cas, une réévaluation de la sanction peut être envisagée. Cela dépend de la nature de l'infraction et du comportement de l'étudiant après la sanction. Une demande de réévaluation peut être adressée à l'administration.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Comment savoir si j'ai été sanctionné ?</h3>
+            <p>Les étudiants sanctionnés seront informés par écrit, généralement par email ou via la plateforme interne de l'école, précisant la nature de la sanction et les raisons de la décision.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Quelles sont les conséquences d'une exclusion temporaire ?</h3>
+            <p>Une exclusion temporaire empêche l'étudiant d'accéder à certaines ressources (cours, équipements, événements) pendant une durée déterminée. La durée de l'exclusion est décidée en fonction de la gravité de l'infraction.</p>
+        </div>
+    </div>
+</section>
+</div>
+
+<!--
+    ==========================================
+        Footer c'est la barre noir en bas
+    ==========================================
+    -->
+    <footer class="footer-section" style="position: relative;">
+        <div class="logo-container">
+            <img src="./../media/acceuil_image/logoo.png" alt="Logo de l'école" class="footer-logo">
+        </div>
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div>
+                        <h3>Contact</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Route Nationale N° 10 cité Azrou, Ait Melloul</p>
+                        <p><i class="fa-solid fa-phone"></i> Téléphone: 05282-42423</p>
+                        <p><i class="fa-regular fa-envelope"></i> fsjes-cuam@uiz.ac.ma</p>
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md-7 ml-auto">
+                        <div class="footer-inner d-flex justify-content-between">
+                            <div class="footer-list-item">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">École</a></li>
+                                    <li><a href="#">Université</a></li>
+                                    <li><a href="#">Alumni</a></li>
+                                    <li><a href="#">Partenaires</a></li>
+                                    <li><a href="#">Équipe</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-list-item">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Événements</a></li>
+                                    <li><a href="#">Recrutement</a></li>
+                                    <li><a href="#">Stages</a></li>
+                                    <li><a href="#">Clubs</a></li>
+                                    <li><a href="#">Règlement</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <small>© 2024 Souss Business School. Tous droits réservés.</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    </div>
+</body>
+</html>

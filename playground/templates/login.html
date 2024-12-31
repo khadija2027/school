@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: url('background.jpg') no-repeat center center fixed; /* Remplacez par l'image de fond souhaitée */
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+        }
+        .login-container {
+            width: 400px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .login-container h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .login-container p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .login-container form {
+            width: 100%;
+        }
+        .login-container input[type="text"], 
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+        .login-container input[type="text"]:focus, 
+        .login-container input[type="password"]:focus {
+            border-color: #6c0c0c;
+        }
+        .login-container .submit-btn {
+            width: 100%;
+            padding: 12px 0;
+            background-color: #7a280f; /* Bleu bouton */
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .login-container .submit-btn:hover {
+            background-color: #7a280f;
+        }
+        .login-container .forgot-password {
+            font-size: 13px;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .login-container .forgot-password a {
+            color: #7a280f;
+            text-decoration: none;
+        }
+        .login-container .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        .login-container .signup-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .login-container .signup-link a {
+            color: #471506;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .login-container .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Bonjour, Bienvenue dans l'environnement de Service IT</h1>
+        <p>Entrez vos coordonnées pour vous connecter à votre compte</p>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Nom d'utilisateur ou courriel">
+            <input type="password" name="password" placeholder="Mot de passe">
+            <button type="submit" class="submit-btn">Connexion</button>
+        </form>
+    </div>
+    <a href ="{% url 'Acceuil'%}" > Accueil  </a>
+</body>
+</html>

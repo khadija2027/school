@@ -1,0 +1,650 @@
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.nav-item a{
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+.sec-padding{
+    padding-bottom: 80px;
+}
+.fixed-top{
+    background: #ebdbdb;
+}
+.nav-item{
+    padding: 0px 5px;
+}
+.nav-btn{
+    padding: 10px 28px !important;
+    background-color: #ebdbdb;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 33px;
+}
+/* début menu */
+/* Barre supérieure */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Icône de menu */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 10px; /* Ajuster pour aligner avec le logo */
+    color: rgba(162, 5, 5, 0.741); 
+}
+
+/* Logo */
+.logo img{
+    width:100px ;
+}
+
+.hidden {           /* POUR masquer la barre supérieure lors de l'affichage du menu */
+    display: none;
+}
+
+/* Menu latéral */
+.menu-container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    z-index: 999;
+}
+.menu-container.active {
+    transform: translateX(0);
+}
+/* Style pour les éléments de menu */
+.menu-item {
+    border-bottom: 2px solid transparent; /* Bordure invisible par défaut */
+    display: inline-block; /* Aligne les éléments horizontalement */
+    margin-right: 20px; /* Espace entre les éléments */
+    color: #fff; /* Couleur du texte */
+    font-size: 16px; /* Taille du texte */
+    cursor: pointer; /* Curseur en forme de main */
+    position: relative; /* Nécessaire pour le pseudo-élément ::after */
+}
+.menu-item::after {
+    content: ""; /* Crée une ligne indépendante */
+    position: absolute;
+    left: 0;
+    right: 0; /* Étend la ligne sous le texte */
+    bottom: 0;
+    height: 3px; /* Épaisseur de la ligne */
+    background-color: transparent; /* Invisible par défaut */
+    transition: background-color 0.4s ease, width 0.4s ease; /* Animation fluide */
+}
+.menu-item:hover::after {
+    background-color: #fff; /* Couleur du soulignement au survol */
+    width: 100%; /* Étend la ligne sous tout le texte */
+    display: inline-block;
+}
+
+/* Style des sous-menu */
+.submenu a {
+    text-decoration: none; /* Supprime les soulignements par défaut */
+    color: #333; /* Couleur des liens */
+    cursor: pointer; /* Curseur pointeur au survol */
+    position: relative; /* Nécessaire pour le pseudo-élément ::after */
+}
+
+.submenu a::after {
+    content: ""; /* Crée une ligne indépendante */
+    position: absolute;
+    left: 0;
+    right: 0; /* S'assure que la ligne suit la largeur du texte */
+    bottom: -1px; /* Positionne la ligne juste sous le texte */
+    height: 2px; /* Épaisseur de la ligne */
+    background-color: transparent; /* Invisible par défaut */
+}
+
+.submenu a:hover::after {
+    background-color: #333; /* Couleur de la ligne au survol */
+    width: 100%;
+}
+
+
+/* Supprimer les puces des listes */
+.submenu ul {
+    list-style-type: none; /* Supprime les points */
+    padding-left: 0; /* Supprime l'espace de gauche */
+}
+
+/* Espace entre les éléments du menu */
+.menu-item, .submenu-item {
+    display: block; /* Assure que les éléments sont des blocs */
+    margin-bottom: 10px; /* Ajoute un espacement vertical */
+    padding: 5px 0; /* Optionnel : Ajoute un espacement intérieur */
+    margin-top:25px
+
+}
+
+/* Optionnel : Espace entre les sous-menus */
+.submenu-item {
+    margin-left: 70px; /* Décale les sous-menus */
+    width: 100%;
+}
+
+ul {
+    list-style-type: none; /* Enlève les points */
+    padding: 0; /* Enlève les marges intérieures */
+    margin: 0; /* Enlève les marges extérieures */
+}
+/* Style les colones de formations */
+/* Style pour le conteneur général */
+.submenu-container {
+    display: flex; /* Dispose les colonnes côte à côte */
+    justify-content: space-between; /* Ajoute de l'espace entre les colonnes */
+    padding: 10px;
+    background-color: #fff; /* Fond blanc */
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    gap: 20px; /* Espacement entre les colonnes */
+    padding: 20px;
+}
+
+/* Style pour les colonnes */
+.submenu-column {
+    width: 80%; /* Chaque colonne prend environ la moitié de la largeur */
+    padding: 0 10px; /* Espacement interne */
+}
+
+/* Ligne verticale entre les colonnes */
+.submenu-column:not(:last-child) {
+    border-right: 1px solid #ddd; /* Ajoute une ligne de séparation */
+}
+
+/* Style pour les titres de colonnes */
+.submenu-column h3 {
+    color: #333; /* Couleur du texte */
+    margin-bottom: 10px;
+}
+
+/* Style pour les liens */
+.submenu-item {
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    color: #333; /* Couleur du texte */
+    display: block; /* Le lien occupe toute la largeur */
+    margin-bottom: 5px; /* Espacement entre les éléments */
+    margin-left: 2%;
+}
+/* Fin Style les colones de formations */
+
+.menu-sidebar {   /*LA BARRE ROUGE */
+    width: 360px;    /* LARGEUR DE LA BARRE ROUGE */
+    background-color: #760303;
+    color: white;
+    padding: 50px;
+    height: 100vh;  /* AVANT 100 POUR REMPLIR TOUTE LA LONGUEUR */
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 25px;
+    left: 30px;
+}
+
+/* Sous-menu */
+.submenu-container {
+    flex-grow: 1;
+    background-color: #fff;   /* le fond blanc du menu */
+    padding: 50px;  /* AVANT il y'avait 20 */
+    overflow-y: auto;
+}
+
+.submenu {
+    display: none;
+}
+
+.submenu.active {
+    display: block;
+}
+
+/* Contenu principal */
+main {
+    margin-top: 60px; /* Pour éviter le chevauchement avec la barre */
+    padding: 20px;
+}
+/* pour que le texte et l'image du haut soit un peu plus bas */
+.header-section .container{
+    height:75%;
+    margin-top:30px;
+}
+
+/* Responsive - Ajuste la largeur du menu latéral sur les petits écrans */
+@media (max-width: 600px) {
+    .menu-sidebar {
+        width: 200px; /* Suppression des caractères invisibles */
+    }
+}
+
+/* Liens du menu */
+.sidebar-nav a {
+    text-decoration: none; /* Suppression du soulignement */
+    color: #d16868; /* Couleur blanche pour le texte */
+    font-size: 16px; /* Taille de la police */
+    padding: 10px; /* Espacement intérieur */
+    display: block; /* Affiche chaque lien comme un bloc */
+}
+/* FIN menu */
+
+
+.page {
+    margin: 0;
+    padding: 0;
+    background-color: #f3f0f0;
+    line-height: 1.6;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#rectangle {
+    background-color: #6c0c0c;
+    width: 100%;
+    height: 650px;
+    margin-top: 65px;
+    display: flex;
+    align-items: center; /* Centers content vertically */
+    justify-content: space-around; /* Ensures spacing between image and text */
+    padding: 0 20px; /* Optional: Adds some horizontal padding */
+}
+
+.rectangle {
+    background: linear-gradient(
+        rgba(108, 12, 12, 0.6), 
+        rgba(139, 15, 15, 0.65)
+    ), 
+    url('images/sportism.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 8rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ajustement pour améliorer la lisibilité du texte sur l'image */
+.rectangle h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease-out;
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.rectangle p {
+    font-size: 1.6rem;
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out;
+    padding: 0 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+
+.rectangle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: backgroundMove 30s linear infinite;
+}
+
+@keyframes backgroundMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+
+.text-containerEQUIPEMENTS {
+    color: #ffffff;
+    font-size: 25px;
+    margin-right: 60px;
+        padding: 20px;
+        max-width: 800px;
+
+}
+
+.slide {
+    width: auto; /* Allows image to scale proportionally */
+    height: auto; /* Ensures proper aspect ratio */
+    max-width: 50%; /* Limits the maximum width of the image */
+    background-color: white;
+    border-radius: 15px;
+    padding: 9px;
+}
+
+.slide img {
+    width: 100%; /* Ensures the image fills the .slide container */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 15px; /* Adds rounded corners */
+    
+}
+
+
+/* Section introduction */
+.INTRO {
+    padding: 60px 20px;
+    background-color: #f8f8f8;
+}
+
+.INTRO h2 {
+    font-size: clamp(28px, 3vw, 48px);
+    font-weight: 600;
+    color: #6c0c0c;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.INTRO p {
+    font-size: clamp(16px, 1.5vw, 20px);
+    color: #333;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Section des e-services */
+.container1 {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+  
+}
+.container1 h2{  
+    font-size: clamp(28px, 3vw, 48px);
+    font-weight: 600;
+    color: #6c0c0c;
+    margin-bottom: 30px;
+    text-align: center;}
+
+.section-title {
+    font-size: clamp(24px, 2.5vw, 36px);
+    color: #6c0c0c;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.mission-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    display: grid;
+    gap: 20px;
+}
+
+
+.mission-list li {
+    font-size: clamp(16px, 1.4vw, 40PX);
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 130px;
+    text-align: center;
+}
+
+.mission-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mission-list li strong {
+    color: #6c0c0c;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Section entre-texte */
+.between-text {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f8f8f8;
+}
+
+.between-text h2 {
+    font-size: clamp(24px, 2.5vw, 36px);
+    color: #6c0c0c;
+    margin-bottom: 20px;
+}
+
+.between-text p {
+    font-size: clamp(16px, 1.2vw, 18px);
+    max-width: 800px;
+    margin: 0 auto 30px;
+    color: #333;
+}
+
+.between-text a.btn {
+    display: inline-block;
+    background-color: #6c0c0c;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: clamp(16px, 1.2vw, 18px);
+    transition: all 0.3s ease;
+    border: 2px solid #6c0c0c;
+}
+
+.between-text a.btn:hover {
+    background-color: #fff;
+    color: #6c0c0c;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(108, 12, 12, 0.2);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    #rectangle {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .text-containerEQUIPEMENTS {
+        margin-right: 0;
+    }
+    
+    .mission-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    .mission-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* Footer Section */
+.logo-container {
+    position: absolute; /* Place le logo par rapport au footer */
+    top: 9%; /* Ajuste la position verticale */
+    left: 40px; /* Ajuste la position horizontale */
+    z-index: 10; /* Assure que le logo est au-dessus du contenu */
+    background-color: #fff; /* Fond blanc du cadre */
+    border-radius: 50%; /* Forme circulaire */
+    width: 70px; /* Largeur du logo */
+    height: 70px; /* Hauteur du logo */
+    display: flex; /* Centre le logo */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1); /* Ajoute une légère ombre */
+}
+
+.footer-logo {
+    width: 190%; /* Ajuste la taille de l'image par rapport au conteneur */
+    height: auto;
+    border-radius: 50%; /* Assure que l'image respecte la forme circulaire */
+}
+
+.footer-section {
+    padding: 40px 0;
+    background-color: #282531;
+    color: #ebdbdb;
+    text-align: center;
+}
+
+.footer-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.footer-section form {
+    margin-bottom: 20px;
+}
+
+.footer-section textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-section button {
+    padding: 10px 20px;
+    background-color: #b22222; /* Red color for submit button */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+.footer-section button:hover {
+    background-color: #a11d1d;
+}
+/* Contact Section start */
+.contact {
+    background: #f4f2ed;
+    padding-top: 30px;
+}
+  
+.container {
+    max-width:1100px;
+}
+  
+.contact-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+  
+.contact-info {
+    width: 80%;
+}
+  
+.contact-info div {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+  
+.contact-info h3 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+  
+.contact-info p {
+    color: #9a9a9a;
+    text-align: left; /* Aligne le texte à gauche */
+
+}
+  
+.contact-info p i {
+    color: #fff;
+    margin-right: 5px;
+    margin-left: 80px;
+}
+  
+.contact-info a i {
+    color: #fff;
+    background: #383848;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50%;
+}
+  
+.contact-info a i:hover {
+    background-color: #fff;
+    color: #383848;
+}  
+.footer-section{
+    padding-top: 50px;
+    background: #6c0c0c;
+    color: #FFFFFF;
+}
+.footer-p p{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 30px;
+}
+.footer-inner{
+    padding-bottom: 10px;
+}
+.footer-list-item ul li{
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 5px;
+}
+
+.footer-list-item a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+small{
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    color: #CDCDCD;
+    position: absolute; /* Rend l'élément positionnable */
+    bottom: 0;          /* Place-le au bas du footer */
+    left: 50%;          /* Aligne horizontalement au centre */
+    transform: translateX(-50%); /* Centre le texte exactement au milieu */
+    width: 100%; 
+}
+/*FIN Footer Section */

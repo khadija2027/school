@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des professeurs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .event-container {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center; /* Centrer tout le contenu à l'intérieur */
+        }
+        .event-header {
+            background-color: #691414;
+            color: white;
+            padding: 15px;
+            font-size: 2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .event-card {
+            border: 1px solid #ddd;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 20px;
+            text-align: left; /* Garde le contenu des cartes aligné à gauche */
+        }
+        .event-image {
+            flex: 1 1 40%;
+            padding-right: 20px;
+        }
+        .event-image img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .event-content-container {
+            flex: 1 1 60%;
+        }
+        .event-description {
+            font-size: 1em;
+            color: #333;
+            line-height: 1.6em;
+        }
+        .event-meta {
+            font-size: 0.9em;
+            color: #691414;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .back-link {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-decoration: none;
+            color: #691414;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="event-container">
+        <!-- En-tête de la page -->
+        <div class="event-header">{{ prof.position }} - {{ prof.name }}</div>
+        
+        <!-- Carte de l'équipe -->
+        <div class="event-card">
+            <!-- Image de l'équipe -->
+            <div class="event-image">
+                {% if prof.image %}
+                    <img src="{{prof.image.url }}" alt="Image de {{prof.name }}">
+                {% else %}
+                    <p>Aucune image disponible</p>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Lien vers la page d'accueil -->
+    <a href="{% url 'Acceuil' %}" class="back-link">Accueil</a>
+
+</body>
+</html>

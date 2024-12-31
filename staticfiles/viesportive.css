@@ -1,0 +1,601 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.nav-item a{
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+.sec-padding{
+    padding-bottom: 80px;
+}
+.fixed-top{
+    background: #ebdbdb;
+}
+.nav-item{
+    padding: 0px 5px;
+}
+.nav-btn{
+    padding: 10px 28px !important;
+    background-color: #ebdbdb;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 33px;
+}
+/* début menu */
+/* Barre supérieure */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Icône de menu */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 10px; /* Ajuster pour aligner avec le logo */
+    color: rgba(162, 5, 5, 0.741);
+    gap: 200PX; 
+}
+
+/* Logo */
+.logo img{
+    width:100px ;
+    display: flex;
+    
+}
+
+.hidden {           /* POUR masquer la barre supérieure lors de l'affichage du menu */
+    display: none;
+}
+
+/* Menu latéral */
+.menu-container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    z-index: 999;
+}
+.menu-container.active {
+    transform: translateX(0);
+}
+/* Style pour les éléments de menu */
+.menu-item {
+    border-bottom: 2px solid transparent; /* Bordure invisible par défaut */
+    display: inline-block; /* Aligne les éléments horizontalement */
+    margin-right: 20px; /* Espace entre les éléments */
+    color: #fff; /* Couleur du texte */
+    font-size: 16px; /* Taille du texte */
+    cursor: pointer; /* Curseur en forme de main */
+    position: relative; /* Nécessaire pour le pseudo-élément ::after */
+}
+.menu-item::after {
+    content: ""; /* Crée une ligne indépendante */
+    position: absolute;
+    left: 0;
+    right: 0; /* Étend la ligne sous le texte */
+    bottom: 0;
+    height: 3px; /* Épaisseur de la ligne */
+    background-color: transparent; /* Invisible par défaut */
+    transition: background-color 0.4s ease, width 0.4s ease; /* Animation fluide */
+}
+.menu-item:hover::after {
+    background-color: #fff; /* Couleur du soulignement au survol */
+    width: 100%; /* Étend la ligne sous tout le texte */
+    display: inline-block;
+}
+
+/* Style des sous-menu */
+.submenu a {
+    text-decoration: none; /* Supprime les soulignements par défaut */
+    color: #333; /* Couleur des liens */
+    cursor: pointer; /* Curseur pointeur au survol */
+    position: relative; /* Nécessaire pour le pseudo-élément ::after */
+}
+
+.submenu a::after {
+    content: ""; /* Crée une ligne indépendante */
+    position: absolute;
+    left: 0;
+    right: 0; /* S'assure que la ligne suit la largeur du texte */
+    bottom: -1px; /* Positionne la ligne juste sous le texte */
+    height: 2px; /* Épaisseur de la ligne */
+    background-color: transparent; /* Invisible par défaut */
+}
+
+.submenu a:hover::after {
+    background-color: #333; /* Couleur de la ligne au survol */
+    width: 100%;
+}
+
+
+/* Supprimer les puces des listes */
+.submenu ul {
+    list-style-type: none; /* Supprime les points */
+    padding-left: 0; /* Supprime l'espace de gauche */
+}
+
+/* Espace entre les éléments du menu */
+.menu-item, .submenu-item {
+    display: block; /* Assure que les éléments sont des blocs */
+    margin-bottom: 10px; /* Ajoute un espacement vertical */
+    padding: 5px 0; /* Optionnel : Ajoute un espacement intérieur */
+    margin-top:25px
+
+}
+
+/* Optionnel : Espace entre les sous-menus */
+.submenu-item {
+    margin-left: 70px; /* Décale les sous-menus */
+    width: 100%;
+}
+
+ul {
+    list-style-type: none; /* Enlève les points */
+    padding: 0; /* Enlève les marges intérieures */
+    margin: 0; /* Enlève les marges extérieures */
+}
+
+
+/* Style pour les colonnes */
+.submenu-column {
+    width: 80%; /* Chaque colonne prend environ la moitié de la largeur */
+    padding: 0 10px; /* Espacement interne */
+}
+
+/* Ligne verticale entre les colonnes */
+.submenu-column:not(:last-child) {
+    border-right: 1px solid #ddd; /* Ajoute une ligne de séparation */
+}
+
+/* Style pour les titres de colonnes */
+.submenu-column h3 {
+    color: #333; /* Couleur du texte */
+    margin-bottom: 10px;
+}
+
+/* Style pour les liens */
+.submenu-item {
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    color: #333; /* Couleur du texte */
+    display: block; /* Le lien occupe toute la largeur */
+    margin-bottom: 5px; /* Espacement entre les éléments */
+    margin-left: 2%;
+}
+/* Fin Style les colones de formations */
+
+.menu-sidebar {   /*LA BARRE ROUGE */
+    width: 360px;    /* LARGEUR DE LA BARRE ROUGE */
+    background-color: #760303;
+    color: white;
+    padding: 50px;
+    height: 100vh;  /* AVANT 100 POUR REMPLIR TOUTE LA LONGUEUR */
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 25px;
+    left: 30px;
+}
+
+/* Sous-menu */
+.submenu-container {
+    flex-grow: 1;
+    background-color: #fff;   /* le fond blanc du menu */
+    padding: 50px;  /* AVANT il y'avait 20 */
+    overflow-y: auto;
+
+        display: flex; /* Dispose les colonnes côte à côte */
+        justify-content: space-between; /* Ajoute de l'espace entre les colonnes */
+        background-color: #fff; /* Fond blanc */
+        grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+        gap: 20px; /* Espacement entre les colonnes */
+       
+}
+
+.submenu {
+    display: none;
+}
+
+.submenu.active {
+    display: block;
+}
+
+/* Contenu principal */
+main {
+    margin-top: 60px; /* Pour éviter le chevauchement avec la barre */
+    padding: 20px;
+}
+/* pour que le texte et l'image du haut soit un peu plus bas */
+.header-section .container{
+    height:75%;
+    margin-top:30px;
+}
+
+/* Responsive - Ajuste la largeur du menu latéral sur les petits écrans */
+@media (max-width: 600px) {
+    .menu-sidebar {
+        width: 200px; /* Suppression des caractères invisibles */
+    }
+}
+
+/* Liens du menu */
+.sidebar-nav a {
+    text-decoration: none; /* Suppression du soulignement */
+    color: #d16868; /* Couleur blanche pour le texte */
+    font-size: 16px; /* Taille de la police */
+    padding: 10px; /* Espacement intérieur */
+    display: block; /* Affiche chaque lien comme un bloc */
+}
+/* FIN menu */
+
+
+.page {
+    margin: 0;
+    padding: 0;
+    background-color: #f3f0f0;
+    line-height: 1.6;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+#rectangle {
+    background-color: #6c0c0c;
+    width: 100%;
+    height: 650px;
+    margin-top: 65px;
+    display: flex;
+    align-items: center; /* Centers content vertically */
+    justify-content: space-around; /* Ensures spacing between image and text */
+    padding: 0 20px; /* Optional: Adds some horizontal padding */
+}
+
+
+
+
+
+
+@keyframes backgroundMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+
+.text-container {
+    color: #ffffff;
+    font-size: 25px;
+    margin-right: 60px;
+        padding: 20px;
+        max-width: 800px;
+
+}
+
+
+.text-container h1 {
+    color: #ffffff;
+    font-size: 60px;
+  
+
+}
+.slide {
+    width: auto; /* Allows image to scale proportionally */
+    height: auto; /* Ensures proper aspect ratio */
+    max-width: 50%; /* Limits the maximum width of the image */
+    background-color: white;
+    border-radius: 15px;
+    padding: 9px;
+}
+
+.slide img {
+    width: 100%; /* Ensures the image fills the .slide container */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 15px; /* Adds rounded corners */
+    
+}
+
+
+/* Main Content Area */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* Section Styling */
+.section {
+    margin-bottom: 60px;
+    text-align: center; /* Ensures content is centered within sections */
+    align-items: center;
+    align-content: center;
+    
+}
+
+/* Section Styling */
+.team-gallery {
+    margin-bottom: 60px;
+    text-align: center; /* Ensures content is centered within sections */
+    align-items: center;
+    align-content: center;
+    display: flex;
+    
+}
+
+
+h2 {
+    font-size: 2.5em;
+    color: #6c0c0c; /* Deep Red */
+    margin-bottom: 20px;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    
+   
+   
+
+}
+
+.page p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto 20px auto;
+    line-height: 2;
+    padding: 0 50px;
+    text-align: justify,center;
+    align-items: center;
+    align-content: center;
+}
+
+/* Gallery for Teams */
+.team-gallery {
+    display: flex;
+    justify-content: center;  /* Center the gallery */
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.team-gallery figure {
+    width: 40%;  /* Make images larger */
+    max-width: 400px; /* Limit the maximum size of each image */
+    text-align: center; /* Center text under images */
+    margin-top: 20px;
+}
+
+.team-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-gallery figcaption {
+    font-size: 1.3em;  /* Larger font size for captions */
+    color: #333; /* Deep Red for the caption */
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Event Link */
+.events-link {
+    padding: 12px 25px;
+    background-color: #6c0c0c; /* Deep Red */
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.events-link:hover {
+    background-color: #a10000; /* Darker red for hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team-gallery {
+        flex-direction: column; /* Stack images vertically on smaller screens */
+        gap: 40px;
+    }
+
+    .team-gallery img {
+        width: 80%;  /* Make images larger on mobile */
+        max-width: 100%;  /* Ensure no overflow */
+        margin-bottom: 20px;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .text-container h1 {
+        font-size: 2.5em; /* Adjust text size for smaller screens */
+    }
+
+    #rectangle {
+        min-height: 450px; /* Adjust the height of the rectangle on small screens */
+    }
+}
+
+/* Footer Section */
+.logo-container {
+    position: absolute; /* Place le logo par rapport au footer */
+    top: 9%; /* Ajuste la position verticale */
+    left: 40px; /* Ajuste la position horizontale */
+    z-index: 10; /* Assure que le logo est au-dessus du contenu */
+    background-color: #fff; /* Fond blanc du cadre */
+    border-radius: 50%; /* Forme circulaire */
+    width: 70px; /* Largeur du logo */
+    height: 70px; /* Hauteur du logo */
+    display: flex; /* Centre le logo */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1); /* Ajoute une légère ombre */
+}
+
+.footer-logo {
+    width: 190%; /* Ajuste la taille de l'image par rapport au conteneur */
+    height: auto;
+    border-radius: 50%; /* Assure que l'image respecte la forme circulaire */
+}
+
+.footer-section {
+    padding: 40px 0;
+    background-color: #282531;
+    color: #ebdbdb;
+    text-align: center;
+}
+
+.footer-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.footer-section form {
+    margin-bottom: 20px;
+}
+
+.footer-section textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-section button {
+    padding: 10px 20px;
+    background-color: #b22222; /* Red color for submit button */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+.footer-section button:hover {
+    background-color: #a11d1d;
+}
+/* Contact Section start */
+.contact {
+    background: #f4f2ed;
+    padding-top: 30px;
+}
+  
+.container {
+    max-width:1100px;
+}
+  
+.contact-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+  
+.contact-info {
+    width: 80%;
+}
+  
+.contact-info div {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+  
+.contact-info h3 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+  
+.contact-info p {
+    color: #9a9a9a;
+    text-align: left; /* Aligne le texte à gauche */
+
+}
+  
+.contact-info p i {
+    color: #fff;
+    margin-right: 5px;
+    margin-left: 80px;
+}
+  
+.contact-info a i {
+    color: #fff;
+    background: #383848;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50%;
+}
+  
+.contact-info a i:hover {
+    background-color: #fff;
+    color: #383848;
+}  
+.footer-section{
+    padding-top: 50px;
+    background: #6c0c0c;
+    color: #FFFFFF;
+}
+.footer-p p{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 30px;
+}
+.footer-inner{
+    padding-bottom: 10px;
+}
+.footer-list-item ul li{
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 5px;
+}
+
+.footer-list-item a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+small{
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    color: #CDCDCD;
+    position: absolute; /* Rend l'élément positionnable */
+    bottom: 0;          /* Place-le au bas du footer */
+    left: 50%;          /* Aligne horizontalement au centre */
+    transform: translateX(-50%); /* Centre le texte exactement au milieu */
+    width: 100%; 
+}
+/*FIN Footer Section */
+
+
+
+
+

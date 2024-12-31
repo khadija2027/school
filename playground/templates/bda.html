@@ -1,0 +1,364 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Souss Business School - BDA </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bda.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Fontawsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ce que j'ai ajouté -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="{% static 'jst.js' %}"></script>
+</head>
+
+    <!--
+    ===================
+        barre sup
+    ===================
+    -->
+
+    <!-- Barre supérieure -->
+    <header class="top-bar">
+        <div class="menu-icon">☰</div>
+        <div class="logo">
+            <a href="../acceuil/index.html">
+                <img src="../../media/acceuil_image/logoo.png" alt="logo" class="img-fluid">
+            </a>
+        </div>
+    </header>
+
+    <!-- Menu latéral -->
+    <div class="menu-container">
+        <div class="menu-sidebar">
+            <button class="close-btn">×</button>
+            <ul>
+                <li class="menu-item" data-target="À propos">À propos</li>
+                <li class="menu-item" data-target="Formations">Formations</li>
+                <li class="menu-item" data-target="Évènements">Évènements</li>
+                <li class="menu-item" data-target="Partenaires">Partenaires</li>
+                <li class="menu-item" data-target="Recruteurs et organisations">Recruteurs et organisations</li>
+                <li class="menu-item" data-target="Vie dans le campus">Vie dans le campus</li>
+                <li><a href="mailto:fsjes-cuam@uiz.ac.ma" class="menu-item"
+                        style="text-decoration: none; color: inherit;">Contactez-nous</a></li>
+            </ul>
+            <div class="contact-info">
+                <div>
+                    <a href="https://www.facebook.com/p/Souss-Business-School-61555934742940/"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/souss-business-school/"><i
+                            class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sous-menus -->
+        <div class="submenu-container">
+            <!-- Sous-menu de "À propos" -->
+            <div id="À propos" class="submenu">
+                <h3>À propos</h3>
+                <ul>
+                    <li><a href="/ecole" class="submenu-item">> École</a></li>
+                    <li><a href="/faculte" class="submenu-item">> Faculté</a></li>
+                    <li><a href="/mot-president" class="submenu-item">> Mot du président</a></li>
+                    <li><a href="/equipes" class="submenu-item">> Équipe</a></li>
+                    <li><a href="/avis_etudiant" class="submenu-item">> Avis de nos étudiants</a></li>
+                    <li><a href="/alumni" class="submenu-item">> Alumni</a></li>
+                </ul>
+            </div>
+
+            <div id="Formations" class="submenu">
+                <h3>Formations</h3>
+                <div class="submenu-container">
+                    <!-- Section Licence -->
+                    <div class="submenu-column">
+                        <h3>Licence d'excellence</h3>
+                        {% for formati in formatis %}
+                        {% if formati.formation_type == "Licence" %}
+                        <ul>
+                            <li><a href="{% url 'formati' formati.id %}" class="submenu-item">> {{formati.name}}</a>
+                        </ul>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <!-- Section Master -->
+                    <div class="submenu-column">
+                        <h3>Master d'excellence</h3>
+                        <div class="submenu-column">
+                            <h3>Licence d'excellence</h3>
+                            {% for formati in formatis %}
+                            {% if formati.formation_type == "Master" %}
+                            <ul>
+                                <li><a href="{% url 'formati' formati.id %}" class="submenu-item">> {{formati.name}}</a>
+                            </ul>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Évènements" class="submenu">
+                <h3>Évènements</h3>
+                <ul>
+                    <li><a href="/News" class="submenu-item">> Récents</a></li>
+                    <li><a href="/Events" class="submenu-item">> Programmés</a></li>
+                </ul>
+            </div>
+            <div id="Partenaires" class="submenu">
+                <h3>Partenaires</h3>
+                <ul>
+                    <li><a href="/partenaires_locaux" class="submenu-item">> Locaux</a></li>
+                    <li><a href="/partenaires_internationaux" class="submenu-item">> Internationaux</a></li>
+                </ul>
+            </div>
+            <div id="Recruteurs et organisations" class="submenu">
+                <h3>Recruteurs et organisations</h3>
+                <ul>
+                    <li><a href="/stages" class="submenu-item">> Stages</a></li>
+                    <li><a href="/recruteurs" class="submenu-item">> Recrutements</a></li>
+                </ul>
+            </div>
+            <div id="Vie dans le campus" class="submenu">
+                <h3>Vie dans le campus</h3>
+                <ul>
+                    <li><a href="/clubs" class="submenu-item">> Clubs</a></li>
+                    <li><a href="/viesportive" class="submenu-item">> Vie sportive</a></li>
+                    <li><a href="/bde" class="submenu-item">> Bureau des Étudiants (BDE)</a></li>
+                    <li><a href="/bda" class="submenu-item">> Bureau des Arts (BDA)</a></li>
+                    <li><a href="/E_services" class="submenu-item">> E-Service</a></li>
+                    <li><a href="/equipement" class="submenu-item">> Équipement</a></li>
+                    <li><a href="/réglements" class="submenu-item">> Règlement</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--
+    ===================
+       fin barre sup
+    ===================
+    -->
+  
+<div class="page">
+    <!-- Rectangle principal -->
+    <div id="rectangle">
+        <div class="slide">
+            <img src="../../media/acceuil_image/BDA.jpeg" alt="Image 1" >
+        </div>
+        <div class="text-containerBDA">
+            <h1><strong>Le Bureau Des arts</strong></h1>
+        </div>
+    </div>
+
+    <section class="arts-section">
+        <div class="arts-container">
+            <div class="arts-image">
+                <img src="../../media/acceuil_image/quote.jpg" alt="quote photo" />
+            </div>
+            <div class="arts-content">
+                <h2 class="arts-title">Avec le Bureau des Arts</h2>
+                <p class="arts-description">Explorez votre curiosité, nourrissez votre créativité et cultivez l'esprit de partage : des atouts essentiels pour réussir dans votre parcours académique et professionnel!</p>
+            </div>
+        </div>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="quote-line"></div>
+                <div class="quote-content">
+                    <p>"L'art est une passerelle vers l'innovation et la créativité, qui nous reconnecte à notre essence et à nos émotions. Il est essentiel de nourrir cette connexion avec soi-même et avec les autres, afin d'avancer ensemble et de façonner l'avenir."</p>
+                    <div class="quote-author">
+                        <p>Présidente du Bureau des Arts à Souss Business School</p>
+                    </div>
+                </div>
+                <div class="quote-marks">
+                    <span class="quote-mark-start">"</span>
+                    <span class="quote-mark-end">"</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Texte entre sections -->
+    <div class="between-text">
+        <h2>À propos du Bureau des arts</h2>
+        <p>Le Bureau des Arts (BDA) de Souss Business School est une organisation étudiante dédiée à la promotion de la culture et des arts au sein de notre école. Passionné par toutes les formes d’expression artistique, le BDA offre un espace créatif où chaque étudiant peut s’épanouir, explorer ses talents et partager ses œuvres avec la communauté scolaire.
+
+            Notre mission est de dynamiser la vie culturelle de l’école en organisant des événements artistiques variés, allant des expositions de peinture et de photographie aux spectacles de théâtre, concerts et performances musicales. Nous encourageons tous les étudiants, qu’ils soient artistes confirmés ou débutants, à participer à nos activités et à s’investir dans la création artistique.
+            
+            Le BDA s’engage également à créer des partenariats avec des galeries d’art, des écoles d’art, et d’autres institutions culturelles afin de renforcer l'accès aux opportunités créatives et de favoriser l’épanouissement artistique de nos membres.
+            
+            Rejoignez-nous pour vivre une expérience enrichissante et découvrir un univers où l’art devient une véritable source d’inspiration, d’évasion et de partage !</p>
+    </div>
+
+    <!-- Notre Mission -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Notre Mission</h2>
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <h3>Promouvoir les Arts</h3>
+                    <p>Organiser des expositions, des performances, et des ateliers d'art pour permettre aux étudiants de découvrir et de pratiquer diverses formes d'art.</p>
+                </div>
+                <div class="mission-card2">
+                    <h3>Encourager la Créativité</h3>
+                    <p>Créer des opportunités pour les étudiants d'explorer leur potentiel artistique.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>Soutien aux Artistes Étudiants</h3>
+                    <p>Offrir un espace pour les étudiants intéressés par les arts visuels, la musique, le théâtre, etc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- événements -->
+   <section class="événements">
+    <div class="container">
+        <h2 class="section-title">Nos événements</h2>
+        <div class="événements-grid">
+            <!-- événement 1 -->
+            <div class="événements-card">
+                <div class="image-rectangle">
+                    <img src="../../media/acceuil_image/Exposition d'art.jpeg" alt="Exposition d'art">
+                </div>
+                <div class="text-container">
+                    <h3>Exposition d'art</h3>
+                    <p>C'est un événement où les étudiants présentent leurs créations, célébrant la diversité et la créativité artistique de notre école.</p>
+                </div>
+            </div>
+
+            <!-- événement 2 -->
+            <div class="événements-card">
+                <div class="image-rectangle">
+                    <img src="../../media/acceuil_image/Concours de photographie.jpg" alt="Concours de photographie">
+                </div>
+                <div class="text-container">
+                    <h3>Concours de photographie</h3>
+                    <p>Le Concours invite les étudiants à capturer et partager leur vision du monde à travers l’objectif, récompensant les clichés les plus marquants.</p>
+                </div>
+            </div>
+
+            <!-- événement 3 -->
+            <div class="événements-card">
+                <div class="image-rectangle">
+                    <img src="../../media/acceuil_image/Saison Théâtrale.jpg" alt="Saison Théâtrale">
+                </div>
+                <div class="text-container">
+                    <h3>Saison Théâtrale</h3>
+                    <p>Cette Saison offre une série de spectacles où les talents théâtraux de l'école se révèlent, de la scène à l’imagination des spectateurs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Boîte à Idées -->
+    <section style="background-color: #f8f3f3;">
+        <div class="container">
+            <h2 class="section-title">Boîte à Idées</h2>
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label>Partagez avec nous votre idée ou suggestion</label>
+                        <textarea rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Réseaux sociaux -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Suivez-nous</h2>
+            <div class="social-links">
+                <a href="https://www.instagram.com/BDE_SoussBusiness" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/BDE_SoussBusiness" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.tiktok.com/@BDE_SoussBusiness" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+    <!--
+    ==========================================
+        Footer c'est la barre noir en bas
+    ==========================================
+    -->
+    <footer class="footer-section" style="position: relative;">
+        <div class="logo-container">
+            <img src="../../media/acceuil_image/logoo.png" alt="Logo de l'école" class="footer-logo">
+        </div>
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div>
+                        <h3>Contact</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Route Nationale N° 10 cité Azrou, Ait Melloul</p>
+                        <p><i class="fa-solid fa-phone"></i> Téléphone: 05282-42423</p>
+                        <p><i class="fa-regular fa-envelope"></i> fsjes-cuam@uiz.ac.ma</p>
+                        <a href="https://www.facebook.com/p/Souss-Business-School-61555934742940/"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/souss-business-school/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md-7 ml-auto">
+                        <div class="footer-inner d-flex justify-content-between">
+                            <div class="footer-list-item">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">École</a></li>
+                                    <li><a href="#">Faculté</a></li>
+                                    <li><a href="#">Alumni</a></li>
+                                    <li><a href="#">Partenaires</a></li>
+                                    <li><a href="#">Équipe</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-list-item">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Événements</a></li>
+                                    <li><a href="#">Recrutement</a></li>
+                                    <li><a href="#">Stages</a></li>
+                                    <li><a href="#">Clubs</a></li>
+                                    <li><a href="#">Règlement</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <small>© 2024 Souss Business School. Tous droits réservés.</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</html>

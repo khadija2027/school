@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les professeurs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color:inherit;
+        }
+
+         h1 {
+            text-align: center;
+            color: white;
+        }
+        h2 {
+            text-align: left;
+            color: #000;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #760303;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header .user-info {
+            font-size: 14px;
+        }
+        .header a {
+            color: white;
+            margin-left: 14px;
+            
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #ebdbdb;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ebdbdb;
+        }
+        .sidebar li a {
+            color: #413960;
+            font-size: 16px;
+            display: block;
+        }
+        .sidebar li a:hover {
+            background-color: #ebdbdb;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .main-content h1 {
+            margin-bottom: 20px;
+        }
+        .btn-event {
+            background-color: #760303;
+            color: #000; 
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn-event:hover {
+            background-color: #760303;
+        }
+        /* Search form */
+        .search-form {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-form input[type="text"] {
+            width: 300px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .search-form input[type="submit"] {
+            padding: 12px 15px;
+            margin-left: 10px;
+            background-color: #760303;
+            border: none;
+            border-radius: 4px;
+            color: #ddd;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .search-form input[type="submit"]:hover {
+            background-color: #660202;
+        }
+
+        /* Team list */
+        .team-list {
+        margin: 20px auto;
+        width: 100%; /* Utiliser toute la largeur disponible */
+        background-color: #ddd;
+    
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        }
+
+        .team-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .team-list ul li {
+            padding: 12px;
+            border-bottom: 1px solid white;
+            font-size: 12px;
+        }
+
+        .team-list ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%; /* Utiliser toute la largeur disponible */
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 12px;
+            border: 1px solid white;
+            font-size: 16px;
+        }
+
+        table th {
+            background-color: #760303;
+            color: #ddd;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Footer link */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            color: #760303;
+            font-size: 10px;
+        }
+        .add-member-btn {
+            display: block;
+            background-color: #760303;
+            color:#ddd;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: right;
+            width: auto;
+            margin-left: 880px;
+            margin-top: 10px;
+        }
+
+        .add-member-btn:hover {
+            background-color: #660202;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Tableau de Bord - Service IT</h1>
+        <div class="user-info">
+            {% if request.user.is_authenticated %}
+                Bonjour, {{ request.user }}
+                <a href="#" onclick="document.getElementById('logout-form').submit(); return false;">Se déconnecter</a>
+                <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                    {% csrf_token %}
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Se connecter</a>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="{% url 'news_list' %}"><i class="fas fa-newspaper"></i> Actualités</a></li>
+            <li><a href="{% url 'event_list' %}"><i class="fas fa-calendar-alt"></i> Événements à venir</a></li>
+            <li><a href="{% url 'formation_list' %}"><i class="fas fa-book"></i> Formations</a></li>
+            <li><a href="{% url 'prof_list' %}"><i class="fas fa-chalkboard-teacher"></i> Professeurs</a></li>
+            <li><a href="{% url 'objectif_list' %}"><i class="fas fa-bullseye"></i> Objectifs</a></li>
+            <li><a href="{% url 'prerequisite_list' %}"><i class="fas fa-tasks"></i> Perspectives</a></li>
+            <li><a href="{% url 'alumni_update' %}"><i class="fas fa-user-edit"></i> Alumni</a></li>
+            <li><a href="{% url 'retour_list' %}"><i class="fas fa-comments"></i> Retours Alumni</a></li>
+            <li><a href="{% url 'histoire_list' %}"><i class="fas fa-history"></i> Histoires Alumni</a></li>
+            <li><a href="{% url 'reseau_list' %}"><i class="fas fa-network-wired"></i> Réseaux Alumni</a></li>
+            <li><a href="{% url 'deplome_list' %}"><i class="fas fa-graduation-cap"></i> Diplômes Alumni</a></li>
+            <li><a href="{% url 'equipe_list' %}"><i class="fas fa-chalkboard-teacher"></i> Equipe</a></li>
+            <li><a href="{% url 'news_list' %}"><i class="fas fa-newspaper"></i> Actualités</a></li>
+            <li><a href="{% url 'event_list' %}"><i class="fas fa-calendar-alt"></i> Événements à venir</a></li>
+            <li><a href="{% url 'Acceuil' %}"><i class="fas fa-home"></i> Accueil</a></li>
+
+        </ul>
+    </div>
+     
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Professeurs</h2>
+        <!-- Search Form -->
+    <div class="search-form">
+        <form method="GET">
+            <input type="text" name="search_area" value="{{ search_input }}" placeholder="Chercher un professeur">
+            <input type="submit" value="CHERCHER">
+        </form>
+    </div>
+
+    <!-- Team List -->
+    <h2>Liste des professeurs</h2>
+    <div class="team-list">
+        <ul>
+            {% for prof in profs %}
+                <li>{{prof.name }}</li>
+            {% empty %}
+                <li>Aucun résultat trouvé.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="{% url 'prof_create' %}" class="add-member-btn">Ajouter un professeur</a>
+
+    <!-- Team Table -->
+    <h2>Tableau des professeurs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prof in profs %}
+                <tr>
+                    <td>{{ prof.name }}</td>
+                    <td>
+                        <a href="{% url 'prof_update' prof.id %}">Modifier</a> |
+                        <a href="{% url 'prof_delete' prof.id %}">Supprimer</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="2">Pas de professeurs</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    
+</body>
+</html>

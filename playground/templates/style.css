@@ -1,0 +1,67 @@
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.event-container {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center; /* Centrer tout le contenu à l'intérieur */
+}
+.event-header {
+    background-color: #691414;
+    color: white;
+    padding: 15px;
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.event-card {
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    text-align: left; /* Garde le contenu des cartes aligné à gauche */
+}
+.event-image {
+    flex: 1 1 40%;
+    padding-right: 20px;
+}
+.event-image img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.event-content-container {
+    flex: 1 1 60%;
+}
+.event-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #691414;
+    margin-bottom: 10px;
+}
+.event-meta {
+    font-size: 0.9em;
+    color: #691414;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.event-description {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6em;
+}

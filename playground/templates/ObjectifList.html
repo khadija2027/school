@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste de l'équipe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #7a280f;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        form label {
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+            margin-right: 10px;
+        }
+        form select {
+            font-size: 1em;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #333;
+        }
+        .event-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .event-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .event-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .event-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .event-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .event-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #7a280f;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.8em;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .event-content {
+            padding: 15px;
+        }
+        .event-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .event-date {
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 5px;
+        }
+        .no-events {
+            text-align: center;
+            color: #888;
+            font-size: 1.2em;
+            margin-top: 50px;
+        }
+        .back-link {
+            margin-top: 20px;
+            text-decoration: none;
+            color: #7a280f;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .event-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .event-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste de l'équipe</h1>
+    <!-- Conteneur de l'équipe -->
+    <div class="event-container">
+        {% for objec in Objec %}
+            <div class="event-card">
+                <!-- Contenu de l'équipe -->
+                <div class="event-content">
+                    <div class="event-title">{{ objec.title }}</div>
+                    <div class="event-date">{{ objec.description }}</div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="no-events">
+                <h3>Aucun membre de l'équipe ajouté</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Lien de retour -->
+    <a href="{% url 'Acceuil' %}" class="back-link">&lt; Retour à l'accueil</a>
+</body>
+</html>

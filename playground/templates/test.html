@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier les informations des formations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .header {
+            background-color: #760303;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .user-info {
+            font-size: 14px;
+        }
+
+        .header a {
+            color: white;
+            margin-left: 14px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #ebdbdb;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sidebar li a {
+            color: #413960;
+            font-size: 16px;
+            display: block;
+        }
+
+        .sidebar li a:hover {
+            background-color: #d6d1d1;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            color: #760303;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn-submit {
+            background-color: #760303;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #580202;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Tableau de Bord - Service IT</h1>
+        <div class="user-info">
+            {% if request.user.is_authenticated %}
+                Bienvenue, {{ request.user }}
+                <a href="#" onclick="document.getElementById('logout-form').submit(); return false;">Se déconnecter</a>
+                <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                    {% csrf_token %}
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Se connecter</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="{% url 'formation_list' %}"><i class="fas fa-book"></i> Formations</a></li>
+            <li><a href="{% url 'event_list' %}"><i class="fas fa-calendar-alt"></i> Événements</a></li>
+            <li><a href="{% url 'Acceuil' %}"><i class="fas fa-home"></i> Accueil</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Modifier les informations des formations</h2>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-container">
+                <label for="id_name">Nom de la formation</label>
+                {{ form.name }}
+
+                <label for="id_formation_type">Type de formation</label>
+                {{ form.formation_type }}
+
+                <label for="id_description">Description</label>
+                {{ form.description }}
+
+                <label for="id_presentation">Présentation de la formation</label>
+                {{ form.presentation }}
+
+                <label for="id_im" >Image 1 : (png)</label>
+                {{ form.im }}
+                
+                <label for="id_ima" >Image 2 : (png)</label>
+                {{ form.ima }}
+
+                <label for="id_imag" >Image 3 : (png)</label>
+                {{ form.imag }}
+
+                <label for="id_obj">Objectifs</label>
+                {{ form.obj }}
+    
+                <!-- Cases à cocher pour Réseaux -->
+                <label for="id_prerequi">Perspectives</label>
+                {{ form.prerequi }}
+    
+                <!-- Cases à cocher pour Diplômes -->
+                <label for="id_prof" >Professeurs</label>
+                {{ form.prof }}
+
+                <label for="id_programme" >Programme (PDF)</label>
+                {{ form.programme }}
+
+                <label for="id_conditions_access" >Conditions d'accès (PDF)</label>
+                {{ form.conditions_access }}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
