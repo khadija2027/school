@@ -28,7 +28,6 @@ DEBUG = False
 
 #ALLOWED_HOSTS = ['school-htaf.onrender.com', 'localhost', '127.0.0.1']
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -143,3 +142,6 @@ EMAIL_HOST_USER ='ali0braiki0@gmail.com'
 #SILENCED_SYSTEM_CHECKS = ['captcha.reCAPTCHA_TEST_MODE']
 
 
+print("ALL ENV VARIABLES:", os.environ)  # Affiche toutes les variables d'environnement
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+print("ALLOWED_HOSTS after split:", ALLOWED_HOSTS)
