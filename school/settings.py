@@ -28,7 +28,8 @@ DEBUG = False
 
 #ALLOWED_HOSTS = ['school-htaf.onrender.com', 'localhost', '127.0.0.1']
 print("ALL ENV VARIABLES:", os.environ)  # Affiche toutes les variables d'environnement
-ALLOWED_HOSTS = ['school-1gws.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['school-1gws.onrender.com', '127.0.0.1', 'localhost']
+
 print("ALLOWED_HOSTS after split:", ALLOWED_HOSTS)
 
 # Application definition
