@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Alumnidelete,AlumniDetail,AlumniUpdate,Deplomedelete,DeplomeCreate,DeplomeDetail,DeplomeList,DeplomeUpdate,ReseauUpdate,ReseauCreate,Reseaudelete,ReseauList,ReseauDetail,HistoireUpdate,RetourDetail,HistoireCreate,HistoireList,Histoiredelete,HistoireDetail,RetourDetail,RetourList,RetourUpdate,Retourdelete,RetourCreate,Prerequisitedelete,PrerequisiteUpdate,PrerequisiteCreate,PrerequisiteDetail,PrerequisiteList,Objectifdelete,ObjectifUpdate, ObjectifCreate,ObjectifDetail,ObjectifsList,ObjectifList,Profdelete,ProfUpdate,ProfCreate,ProfDetail,ProfsList,ProfList, FormationDetail,FormationCreate,Formationdelete,FormationUpdate,FormationCreate,FormationsList,FormationList, EquipesList,EquipeDetail,EquipeCreate,EquipeUpdate,Equipedelete,EquipeList, NewsList ,NewsDetail,NewsCreate ,NewsUpdate,Newsdelete , CustomLoginView ,RegisterPage,HomeView ,HOMEView ,EventList ,EventDetail,EventCreate ,EventUpdate,Eventdelete,Events_List,NewssList
+from .views import test_allowed_hosts, Alumnidelete,AlumniDetail,AlumniUpdate,Deplomedelete,DeplomeCreate,DeplomeDetail,DeplomeList,DeplomeUpdate,ReseauUpdate,ReseauCreate,Reseaudelete,ReseauList,ReseauDetail,HistoireUpdate,RetourDetail,HistoireCreate,HistoireList,Histoiredelete,HistoireDetail,RetourDetail,RetourList,RetourUpdate,Retourdelete,RetourCreate,Prerequisitedelete,PrerequisiteUpdate,PrerequisiteCreate,PrerequisiteDetail,PrerequisiteList,Objectifdelete,ObjectifUpdate, ObjectifCreate,ObjectifDetail,ObjectifsList,ObjectifList,Profdelete,ProfUpdate,ProfCreate,ProfDetail,ProfsList,ProfList, FormationDetail,FormationCreate,Formationdelete,FormationUpdate,FormationCreate,FormationsList,FormationList, EquipesList,EquipeDetail,EquipeCreate,EquipeUpdate,Equipedelete,EquipeList, NewsList ,NewsDetail,NewsCreate ,NewsUpdate,Newsdelete , CustomLoginView ,RegisterPage,HomeView ,HOMEView ,EventList ,EventDetail,EventCreate ,EventUpdate,Eventdelete,Events_List,NewssList
 from django.contrib.auth.views import LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -7,6 +7,10 @@ from . import views
 
 # URL configuration
 urlpatterns = [
+
+    path('test-host/', test_allowed_hosts),
+
+
  path ('login/',CustomLoginView.as_view(),name ='login'), 
  path ('logout/',LogoutView.as_view(next_page = 'login'),name ='logout'),   
  path ('register/',RegisterPage.as_view(),name ='register'),   

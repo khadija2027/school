@@ -19,10 +19,10 @@ from django.core.mail import send_mail
 from .forms import ContactForm
 from django.contrib import messages
 
+from django.http import HttpResponse
 
-def some_view(request):
-    print("Host reçu :", request.get_host())
-    return HttpResponse("OK")
+def test_allowed_hosts(request):
+    return HttpResponse(f"Host reçu : {request.get_host()}")
 
 
 class HOMEView(TemplateView):

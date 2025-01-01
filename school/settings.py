@@ -26,12 +26,8 @@ SECRET_KEY = 'django-insecure-gs@6%!(at0d$a*&^_%2dvu4=#9d3o2gk*$d-hjpr*3=#0%8d@i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-#ALLOWED_HOSTS = ['school-htaf.onrender.com', 'localhost', '127.0.0.1']
-print("ALL ENV VARIABLES:", os.environ)  # Affiche toutes les variables d'environnement
-ALLOWED_HOSTS = ['school-1gws.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['school-1gws.onrender.com', '.localhost', '127.0.0.1', '[::1]']
 
-print("ALLOWED_HOSTS after split:", ALLOWED_HOSTS)
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
