@@ -20,6 +20,10 @@ from .forms import ContactForm
 from django.contrib import messages
 
 
+def some_view(request):
+    print("Host reçu :", request.get_host())
+    return HttpResponse("OK")
+
 
 class HOMEView(TemplateView):
     template_name = 'Acceuil.html'

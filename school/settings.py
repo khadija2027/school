@@ -31,6 +31,8 @@ print("ALL ENV VARIABLES:", os.environ)  # Affiche toutes les variables d'enviro
 ALLOWED_HOSTS = ['school-1gws.onrender.com', '127.0.0.1', 'localhost']
 
 print("ALLOWED_HOSTS after split:", ALLOWED_HOSTS)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Application definition
 INSTALLED_APPS = [
